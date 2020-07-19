@@ -16,7 +16,7 @@ class CreateMemberActivitiesTable extends Migration
         Schema::create('member_activities', function (Blueprint $table) {
             $table->id();
             $table->string('membership_for_year', 4);
-            $table->date('request_date')->nullable();
+            $table->date('date_of_request')->nullable();
             $table->string('membership_type', 15);
             $table->date('membership_expiration')->nullable();
             $table->boolean('class');
