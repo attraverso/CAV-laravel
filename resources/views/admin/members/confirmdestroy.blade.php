@@ -5,7 +5,7 @@
 @section('content')
   <div class="container mt-3">
     <div class="d-flex justify-content-between align-items-center">
-      <h1>Stai visualizzando i dati di <span class="text-primary">{{$member->first_name . ' ' . $member->last_name}}</span></h1>
+      <h1>Stai per <span class="text-danger">eliminare</span> i dati di {{$member->first_name . ' ' . $member->last_name}}</h1>
       <a class="btn btn-secondary" href="{{route('admin.members.index')}} ">Torna alla lista</a>
     </div>
     <table class="table">
@@ -60,7 +60,10 @@
         </tr>
       </tbody>
     </table>
-    <a class="btn btn-warning" href="{{route('admin.members.edit', ['member' => $member->id])}}">Modifica</a>
-    <a class="btn btn-danger" href="{{route('admin.members.confirmdestroy', ['member' => $member->id])}}">Elimina</a>
+    <form action="{{route('admin.members.destroy', ['member' => $member->id])}}" method="post">
+      @csrf
+      @method('DELETE')
+      <button class="btn btn-danger" type="submit">Conferma eliminazione</button>
+    </form>
   </div>
 @endsection

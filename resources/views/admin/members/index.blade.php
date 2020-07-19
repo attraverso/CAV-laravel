@@ -26,7 +26,7 @@
             <td>
               <a class="btn btn-primary" href="{{route('admin.members.show', ['member' => $member->id])}}">Dettagli</a>
               <a class="btn btn-warning" href="{{route('admin.members.edit', ['member' => $member->id])}}">Modifica</a>
-              <a class="btn btn-danger" href="{{route('admin.members.destroy', ['member' => $member->id])}}">Elimina</a>
+              <a class="btn btn-danger" href="{{route('admin.members.confirmdestroy', ['member' => $member->id])}}">Elimina</a>
             </td>
           </tr>
         @endforeach
