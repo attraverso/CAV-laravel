@@ -20,5 +20,6 @@ Auth::routes();
 Route::prefix('/admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
   Route::get('/', 'HomeController@index')->name('index');
   Route::resource('members', 'MemberController');
+  Route::resource('activities', 'MemberActivityController');
   Route::get('members/{member}/confirmdestroy', 'MemberController@confirmdestroy')->name('members.confirmdestroy');
 });

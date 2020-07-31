@@ -9,42 +9,6 @@ use App\Member;
 class MemberController extends Controller
 {
 
-  public function confirmdestroy($id) {
-    $member = Member::find($id);
-    return view('admin.members.confirmdestroy', compact('member'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create() {
-    return view('admin.members.create');
-  }
-
-    /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id) {
-    $member = Member::find($id);
-    $member->delete();
-    return redirect()->route('admin.members.index');
-  }
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id) {
-    $member = Member::find($id);
-    return view('admin.members.edit', compact('member'));
-  }
-
   /**
    * Display a listing of the resource.
    *
@@ -77,7 +41,7 @@ class MemberController extends Controller
     $validatedData = $request->validate([
       'first_name' => 'required',
       'last_name' => 'required',
-      'social_sec_nr' => ['regex:^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1})^', 'nullable'],
+      'social_sec_nr' => ['regex:^([A-Z]{6}[0-9]{2}[ABCDEHLMPRST]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})^', 'nullable'],
       'date_of_birth' => 'date',
       'postal_code' => ['regex:^\b\d{5}\b^'],
       'email' => 'email|nullable', //TODO: add rfc,dns once you're ready to start with real data
@@ -90,6 +54,42 @@ class MemberController extends Controller
     return redirect()->route('admin.members.show', ['member' => $newRecord->id]);
   }
 
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create() {
+    return view('admin.members.create');
+  }
+
+    /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+
+  public function confirmdestroy($id) {
+    $member = Member::find($id);
+    return view('admin.members.confirmdestroy', compact('member'));
+  }
+
+  public function destroy($id) {
+    $member = Member::find($id);
+    $member->delete();
+    return redirect()->route('admin.members.index');
+  }
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function edit($id) {
+    $member = Member::find($id);
+    return view('admin.members.edit', compact('member'));
+  }
 
   /**
    * Update the specified resource in storage.
@@ -103,7 +103,7 @@ class MemberController extends Controller
     $validatedData = $request->validate([
       'first_name' => 'required',
       'last_name' => 'required',
-      'social_sec_nr' => ['regex:^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1})^', 'nullable'],
+      'social_sec_nr' => ['regex:^([A-Z]{6}[0-9]{2}[ABCDEHLMPRST]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})^', 'nullable'],
       'date_of_birth' => 'date',
       'postal_code' => ['regex:^\b\d{5}\b^'],
       'email' => 'email|nullable', //TODO: add rfc,dns once you're ready to start with real data

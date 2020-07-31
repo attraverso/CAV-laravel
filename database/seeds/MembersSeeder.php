@@ -19,7 +19,7 @@ class MembersSeeder extends Seeder
       $newRecord = new Member();
       $newRecord->first_name = $faker->firstName;
       $newRecord->last_name = $faker->lastName;
-      $newRecord->social_sec_nr = $faker->taxId;
+      $newRecord->social_sec_nr = $faker->regexify('[A-Z]{6}[0-9]{2}[ABCDEHLMPRST]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}');
       $newRecord->date_of_birth = $faker->dateTime('now', 'Europe/Rome');
       $newRecord->city_of_birth = $faker->city;
       $newRecord->province_of_birth = $faker->lexify('??');

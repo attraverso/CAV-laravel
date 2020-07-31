@@ -20,7 +20,8 @@
       <tbody>
         @foreach ($members as $member)
           <tr>
-            <td>{{$member->first_name}}</td>
+            <td>
+              {{dd($member->activities[0]->id)}} {{$member->memberActivities->id}}</td>
             <td>{{$member->last_name}}</td>
             <td>{{$member->social_sec_nr}}</td>
             <td>
