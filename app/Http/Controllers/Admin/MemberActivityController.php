@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Member;
 use App\MemberActivity;
+use DateTime;
 use Illuminate\Http\Request;
 
 class MemberActivityController extends Controller
@@ -24,9 +26,15 @@ class MemberActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    // public function create($id)
+    // {
+    //   $member = Member::find($id);
+    //   return view('admin.activities.create', compact('member'));
+    // }
+    public function new($id)
     {
-        //
+      $member = Member::find($id);
+      return view('admin.activities.new', compact('member'));
     }
 
     /**
@@ -37,7 +45,17 @@ class MemberActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $valid_data = $request->validate([
+        'membership_for_year' => ['regex:^([0-9]{4}^'],//TODO: ma sta cosa funziona davvero???
+      ]);
+
+      $data = $request->all();
+      $newActivity = new MemberActivity();
+      $newActivity->fill($data);
+      dd($data['membership_start']);
+      $membership_expiration_date = new DateTime($data['membership_start']);
+      $newActivity->save();
+      return redirect(route('admin.activities.show'), ['member_activity' => $newActivity->id]);
     }
 
     /**

@@ -6,7 +6,7 @@
 <div class="container mt-3">
   <div class="d-flex justify-content-between align-items-center">
     <h1>Elenco iscrizioni</h1>
-    <a class="btn btn-success" href="{{route('admin.members.create')}} ">Aggiungi nuova</a>
+    <a class="btn btn-success" href="{{route('admin.activities.create')}} ">Aggiungi nuova</a>
   </div>
   <table class="table">
     <thead class="thead-dark">
@@ -31,11 +31,11 @@
           <td>{{$activity->membership_type}}</td>
           <td>{{$activity->membership_end}}</td>
           <td>{{$activity->class == true? 'SI' : 'NO'}}</td>
-          {{-- <td>
-            <a class="btn btn-primary" href="{{route('admin.member_activities.show', ['member_activity' => $activity->id])}}">Dettagli</a>
-            <a class="btn btn-warning" href="{{route('admin.member_activities.edit', ['member_activity' => $activity->id])}}">Modifica</a>
-            <a class="btn btn-danger" href="{{route('admin.member_activities.confirmdestroy', ['member_activity' => $activity->id])}}">Elimina</a>
-          </td> --}}
+          <td>
+            <a class="btn btn-primary" href="{{route('admin.activities.show', ['activity' => $activity->id])}}">Dettagli</a>
+            <a class="btn btn-warning" href="{{route('admin.activities.edit', ['activity' => $activity->id])}}">Modifica</a>
+            <a class="btn btn-danger" href="{{route('admin.activities.confirmdestroy', ['activity' => $activity->id])}}">Elimina</a>
+          </td>
         </tr>
       @endforeach
     </tbody>

@@ -40,11 +40,11 @@
         </div>
         <div class="form-group col-md-2">
           <label for="member-provinceob">Provincia/Stato estero</label>
-          <input type="text" class="form-control" id="mamber-provinceob" name="province_of_birth"  value="{{old('province_of_birth')}}">
+          <input type="text" class="form-control" id="member-provinceob" name="province_of_birth"  value="{{old('province_of_birth')}}">
         </div>
         <div class="form-group col-md-4">
           <label for="member-dob">Data di nascita</label>
-          <input type="date" class="form-control" id="mamber-dob" name="date_of_birth" value="{{old('date_of_birth')}}">
+          <input type="date" class="form-control" id="member-dob" name="date_of_birth" value="{{old('date_of_birth')}}">
         </div>
      </div>
      <div class="form-row">
@@ -85,7 +85,7 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="member-notes">Note</label>
-          <textarea class="form-control" name="notes" id="member-notes" rows="3">{{old('notes')}}"</textarea>
+          <textarea class="form-control" name="notes" id="member-notes" rows="3">{{old('notes')}}</textarea>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Aggiungi iscritto</button>
