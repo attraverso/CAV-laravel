@@ -24,4 +24,5 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->middleware('auth')-
   Route::resource('activities', 'MemberActivityController');
   Route::get('activities/{activity}/confirmdestroy', 'MemberActivityController@confirmdestroy')->name('activities.confirmdestroy');
   Route::get('activities/{activity}/new', 'MemberActivityController@new')->name('activities.new');
+  Route::post('activities/{activity}/stock', 'MemberActivityController@stock')->name('activities.stock');
 });

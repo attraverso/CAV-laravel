@@ -19,7 +19,7 @@
         </ul>
       </div>
      @endif
-    <form action="{{route('admin.activities.store')}}" method="post">
+    <form action="{{route('admin.activities.stock', ['activity' => $member->id])}}" method="post">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-3">
@@ -33,8 +33,8 @@
       </div>
      <div class="form-row">
       <div class="form-group col-md-3">
-        <label for="activity-ssn">Tipo attività</label>
-        <input type="text" class="form-control" id="activity-ssn" name="membership_type" value="{{old('social_sec_nr')}}">
+        <label for="activity-type">Tipo attività</label>
+        <input type="text" class="form-control" id="activity-type" name="membership_type" value="{{old('membership_type')}}">
       </div>
         <fieldset class="form-group col-md-3">
           <legend class="col-form-label">Corso di tiro</legend>
@@ -48,12 +48,12 @@
           </div>
         </fieldset>
       </div>
-      <div class="form-row">
+      {{-- <div class="form-row">
         <div class="form-group col-md-12">
           <label for="member-notes">Note</label>
           <textarea class="form-control" name="notes" id="member-notes" rows="3">{{old('notes')}}</textarea>
         </div>
-      </div>
+      </div> --}}
       <button type="submit" class="btn btn-primary">Aggiungi iscrizione</button>
     </form>
   </div>
